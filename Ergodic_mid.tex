@@ -1,0 +1,222 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Do not alter this block of commands.  If you're proficient at LaTeX, you may include additional packages, create macros, etc. immediately below this block of commands, but make sure to NOT alter the header, margin, and comment settings here. 
+\documentclass[12pt]{article}
+ \usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts, enumitem, fancyhdr, color, comment, graphicx, environ, kotex, mathrsfs, mathtools, physics, esint, bm}
+\pagestyle{fancy}
+\setlength{\headheight}{65pt}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{sol}
+    {\emph{Solution:}
+    }
+    {
+    \qed
+    }
+\specialcomment{com}{ \color{blue} \textbf{Comment:} }{\color{black}} %for instructor comments while grading
+\NewEnviron{probscore}{\marginpar{ \color{blue} \tiny Problem Score: \BODY \color{black} }}
+
+\DeclareMathOperator{\cc}{\mathbb{C}}
+\DeclareMathOperator{\rr}{\mathbb{R}}
+\DeclareMathOperator{\bA}{\mathbb{A}}
+\DeclareMathOperator{\zz}{\mathbb{Z}}
+\DeclareMathOperator{\fra}{\mathfrak{a}}
+\DeclareMathOperator{\frb}{\mathfrak{b}}
+\DeclareMathOperator{\frm}{\mathfrak{m}}
+\DeclareMathOperator{\frp}{\mathfrak{p}}
+\DeclareMathOperator{\slin}{\mathfrak{sl}}
+\DeclareMathOperator{\Lie}{\mathsf{Lie}}
+\DeclareMathOperator{\Alg}{\mathsf{Alg}}
+\DeclareMathOperator{\spec}{\mathrm{spec}}
+\DeclareMathOperator{\End}{\mathrm{End}}
+\DeclareMathOperator{\rad}{\mathrm{rad}}
+\newcommand*\Laplace{\mathop{}\!\mathbin\bigtriangleup}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Sch}{\mathbf{Sch}}
+\newcommand{\Ring}{\mathbf{Ring}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Fill in the appropriate information below
+\lhead{SungBin Park, 20150462}  %replace with your name
+\rhead{Ergodic theory} %replace XYZ with the homework course number, semester (e.g. ``Spring 2019"), and assignment number.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Do not alter this block.
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%Solutions to problems go below.  Please follow the guidelines from https://www.overleaf.com/read/sfbcjxcgsnsk/
+
+
+%Copy the following block of text for each problem in the assignment.
+\begin{problem}{1}
+\end{problem}
+Since $T^{-1}$ moves a rectangle on $\mathbb{T}^k$ to the same rectangle with different position injectively, $T^{-1}$ is measure preserving transformation,
+
+($\Rightarrow$) Assume $1, \alpha_1, \ldots, \alpha_k$ are rationally independent and $f\in L^2$ is invariant under $T$. Since $f\in L^2(\mathbb{T}^k)$, $f$ has Fourier expansion: $f(x)=\sum\limits_{m\in \mathbb{Z}^k}c_m e^{2\pi i m\cdot x}$ for some $\{c_m\}_{m\in \mathbb{Z}^k}$. Since $f$ is invariant under $T$ and $e^{2\pi i m \cdot x}$ is an orthonormal basis of $L^2(\mathbb{T}^k)$, $Tf=\sum\limits_{m\in \mathbb{Z}^k}c_m Te^{2\pi i m\cdot x}=\sum\limits_{m\in \mathbb{Z}^k}c_m e^{2\pi i m\cdot (x_1+\alpha_1, \ldots, x_k+\alpha_k)}=\sum\limits_{m\in \mathbb{Z}^k}c_me^{2\pi i \left(\sum_{j=1}^k m_j \alpha_j\right) } e^{2\pi i m\cdot x}$. By the uniqueness of Fourier coefficient of $f$, $c_m=c_me^{2\pi i \left(\sum_{j=1}^k m_j \alpha_j\right) }$, but we know that $1, \alpha_1, \ldots, \alpha_k$ are rationally independent, so it forces $c_m=0$ for $m\neq 0$. Therefore, $f$ is constant a.e. and it shows that $T$ is ergodic.
+
+($\Leftarrow$) WLOG, assume $1, \alpha_1, \ldots, \alpha_k$ are rationally dependent and $n_0+\sum\limits_{i=1}^k n_i \alpha_i=0$ for $n_i\in \mathbb{Z}$, not all of which are zero. Then, for $f(x_1, \ldots, x_k)=e^{2\pi i \left(\sum_{j=1}^k n_j x_j\right) }$, $Tf(x)=e^{2\pi i \left(\sum_{j=1}^k n_j (x_j+\alpha_j)\right)} = e^{2\pi i \left(\sum_{j=1}^k n_j x_j\right)}=f$, but $f$ is not constant a.e. Therefore, $T$ is not ergodic.
+
+
+
+\begin{problem}{2}
+\end{problem}
+I'll use Birkhoff theorem to show it. If $\mu_1=\mu_2$, $\mu_1$ and $\mu_2$ can not be mutually singular, so I'll assume that $\mu_1\neq \mu_2$, so there exists $E\in \mathcal{B}$ such that $\mu_1(E)\neq \mu_2(E)$. Now, consider $f=\chi_E$ and apply Birkhoff theorem. Since $T$ is ergodic,
+\begin{equation*}
+    \lim\limits_{n\rightarrow \infty}\frac{1}{n}\sum\limits_{j=0}^{n-1} f(T^j x)=f^*(x)=\int \chi_E d\mu_i=\mu_i(E)
+\end{equation*}
+for $x\in F_i$ such that $\mu_i(F_i)=1$ for each $i$. Since $\mu_1(E)\neq \mu_2(E)$, $F_1\cap F_2=\phi$. Now, set $F'_1=X\setminus F_2$, $F'_2=F_2$, then $F'_1\cap F'_2=\phi$,  $F'_1\cup F'_2=X$, and $\mu_1(F'_1)=\mu_2(F'_2)=1$ implying $\mu_1(F'_2)=\mu_2(F'_1)=0$. Therefore, $\mu_1$ and $\mu_2$ are mutually singular.
+
+\begin{problem}{3}
+\end{problem}
+I'll show the measurable isomorphism between $(\mathbb{T}^2, T_2\times T_2)$ and $(X, \sigma)$, where $X=\{0,1\}^{\mathbb{N}}$ with the infinite product measure $\mu=\prod_{i\in \mathbb{N}}\mu_{(1/2, 1/2)}$ and $\sigma$ will be defined later, and between $(X, \sigma)$ and $(\mathbb{T}, T_4)$, and finally conclude that$(\mathbb{T}^2, T_2\times T_2)$ and $(\mathbb{T}, T_4)$ are measurably isomorphic.
+
+Let $\phi:X\rightarrow \mathbb{T}^2$ by
+\begin{equation*}
+    \phi(x_0, x_1, x_2, x_3, \ldots)=\left(\sum\limits_{n=0}^\infty \frac{x_{2n}}{2^{n+1}}, \sum\limits_{n=0}^\infty \frac{x_{2n+1}}{2^{n+1}}\right)
+\end{equation*}
+First, this is measurable function: For any rectangle $(k_1/2^{n_1}, (k_1+1)/2^{n_1})\times (k_2/2^{n_2}, (k_2+1)/2^{n_2})$ in $\mathbb{T}^2$, the inverse image is measurable in $X$. (There is a representation problem such that $\phi(1,0,0, 0, \ldots)=\phi(0, 1, 1, 1, \ldots)$, but these points are countable and does not affect measurability and measure.) Also, any rectangle in $\mathbb{T}^2$ can be represented as a union of such small enough rectangles, so the inverse image of the rectangle also measurable. Furthermore, this is measure preserving since $\mu\left(\phi^{-1}\left((k_1/2^{n_1}, (k_1+1)/2^{n_1})\times (k_2/2^{n_2}, (k_2+1)/2^{n_2})\right)\right)=\frac{1}{2^{n_1n_2}}$. Therefore, $\phi$ is a measure preserving from $(X,\mu)$ to $(\mathbb{T}^2, m_{\mathbb{T}^2})$. Also, this is invertible since without countable points having representation problem, all the real number in $\mathbb{T}^2$ have unique binary representation.
+
+Now, define left shift map $\sigma:X\rightarrow X$ by
+\begin{equation*}
+    \sigma(x_0, x_1, x_2, x_3, x_4, x_5, \ldots)=(x_2, x_3, x_4, x_5, \ldots)
+\end{equation*}
+Then, this preserves the measure of cylinder sets, so it is measure preserving transformation. Also,
+\begin{equation*}
+    \phi\circ \sigma(x_0, x_1, x_2, x_3, \ldots)=\phi(x_2, x_3, \ldots)=(T_2\times T_2)\circ \phi(x_0, x_1, x_2, x_3, \ldots)
+\end{equation*}
+for $\sigma$ acts like $(2x_1\mod 1, 2x_2\mod 1)$ in $\mathbb{T}^2$.
+
+Now, I'll show that $(X,\sigma)$ is measurably isomorphic to $(\mathbb{T}, T_4)$. We can define map $\phi':X\rightarrow\mathbb{T}$ by
+\begin{equation*}
+    \phi'(x_0, x_1, \ldots)=\sum\limits_{n=0}^\infty \frac{x_n}{2^{n+1}}
+\end{equation*}
+Then, it is invertible measure preserving map from $(X, \mu)$ to $(\mathbb{T}, m_{\mathbb{T}})$ as in the textbook.(In fact, it is the similar argument to show $(X, \mu)$ to $(\mathbb{T}^2, m_{\mathbb{T}^2})$, so I'll skip it.) Also, $\phi\circ \sigma (x)=T_4\circ \phi(x)$ since in this case, $\sigma$ acts like $(4x\mod 1)$ in $\mathbb{T}$. Therefore, $(X,\sigma)$ is measurably isomorphic to $(\mathbb{T}, T_4)$ and we can conclude that $(\mathbb{T}, \mathcal{B}, m_{\mathbb{T}}, T_4)$ is isomorphic to $(\mathbb{T}^2, \mathcal{B}\otimes\mathcal{B}, m_{\mathbb{T}^2}, T_2\times T_2)$.
+
+\begin{problem}{4}
+\end{problem}
+$T^{-1}(x,y)=(x-\alpha, y+\alpha-x)$. Since $T$ is bijective and $T^{-1}$ sends a rectangle to parallelogram with same size, it has measure preserving property.
+
+Assume $\alpha$ is irrational. and $f\in L^2$ is invariant under $T$. Since $f\in L^2(\mathbb{T}^2)$, $f$ has Fourier expansion: $f(x,y)=\sum\limits_{m_1,m_2\in \zz}c_{m_1,m_2} e^{2\pi i (m_1x+m_2y)}$ for some $\{c_{m_1,m_2}\}_{m_1,m_2\in \zz}$. Since $f$ is invariant under $T$ and $e^{2\pi i (m_1x+m_2y)}$ is an orthonormal basis of $L^2(\mathbb{T}^2)$, $Tf(x)=\sum\limits_{m_1,m_2\in \zz}c_{m_1,m_2} Te^{2\pi i (m_1x+m_2y)}=\sum\limits_{m_1,m_2\in \zz}c_{m_1,m_2} e^{2\pi i (m_1(x+\alpha)+m_2(x+y))}=\sum\limits_{m_1,m_2\in \zz}c_{m_1,m_2}e^{2\pi im_1\alpha} e^{2\pi i ((m_1+m_2)x+m_2y)}$. By the uniqueness of Fourier coefficient, $c_{m_1+m_2, m_2}=c_{m_1,m_2}e^{2\pi im_1\alpha}$. Also, by Hausdorff-Young inequality, $\{c_{m_1,m_2}\}\in l^2(\zz^2)$, however, $c_{m_1+m_2, m_2}=c_{m_1,m_2}e^{2\pi im_1\alpha}$ means that if there exists $a_0, b_0$ such that $b_0\neq 0$ and $c_{a_0, b_0}\neq 0$, then $c_{k, b_0}=c_{a_0+kb_0, b_0}$ for $k\in \zz$ and $\{c_{m_1,m_2}\}\notin l^2(\zz^2)$. Therefore, $c_{m_1,m_2}=0$ for $m_2\neq 0$. For $m_2=0$, $c_{m_1+m_2, m_2}=c_{m_1,m_2}e^{2\pi im_1\alpha}$ implies $c_{m_1, 0}=c_{m_1,0}e^{2\pi im_1\alpha}$, which forces $c_{m_1,0}=0$ if $m_1\neq 0$. Therefore, $f$ is constant a.e. and $T$ is ergodic.
+
+\begin{problem}{5}
+\end{problem}
+Since $f\in L^+$ and $\int f d\mu=\infty$, we can select a simple function $f_M\in L^1$ for each $M\in \mathbb{N}$ satisfying $\int f_M d\mu>M$, $f_M\in L^+$, $f_j\leq f_{j+1}$ for each $j$, and $f=\lim_{M\rightarrow \infty} f_M$. (Since $f\in L^+$, there exists a sequence $\{\phi_n\}\subset L^+$ of simple functions in increasing order and $\phi_n\rightarrow f$ pointwisely.(Folland Theorem 2.10 (a)) Also, if $\int \phi_n<U$ for some $U\in \rr$ for all $n$, then by monotone convergence theorem, $\int f<\infty$, which is contradiction.) Since $T$ is ergodic, by Birkhoff theorem, for each $M$,
+\begin{equation*}
+    \lim\limits_{N\rightarrow \infty}\frac{1}{N}\sum\limits_{n=0}^{N-1} f(T^n x)\geq \lim\limits_{N\rightarrow \infty}\frac{1}{N}\sum\limits_{n=0}^{N-1} f_M(T^n x)=\int f_M d\mu >M
+\end{equation*}
+for $x\in F_M$ such that $\mu(F_M)=1$. Set $F=\cap_{M=1}^\infty F_M$, then $\mu(F)=1$ and for $x\in F$, $\lim\limits_{N\rightarrow \infty}\frac{1}{N}\sum\limits_{n=0}^{N-1} f(T^n x)=\infty$.
+
+\begin{problem}{6}
+\end{problem}
+Choose $A_0, A_1, \ldots, A_k\in \mathcal{B}$ and fix $\epsilon>0$. Since $\mathcal{B}$ is generated by cylinder set, for each $A_i$ by finite union of cylinder set $A'_i$ such that $\mu(A_i\Delta A'_i)<\epsilon/k^3$. For each $A'_i$, let $N_i\in\mathbb{N}$ such that if $\abs{j}>N_i$, $\pi_j(A'_i)=\{0,1\}$, which is projection on $j$th coordinate. Choose $n_1, n_2, \ldots, n_k$ satisfying $n_1, n_2-n_1, \ldots, n_k-n_{k-1}>2\left(\sum\limits_{i=1}^k N_i\right)$, then each $T^{-n_i}A'_i$ are in free coordinate of $T^{-n_j}A'_j$ for $j\neq i$. Now, let's show that $T$ is mixing of order $k$.
+\begin{equation*}
+    \begin{split}
+        &\abs{\mu(A_0\cap T^{-n_1}A_1\cap\cdots\cap T^{-n_k}A_k)-\mu(A_1)\mu (A_2)\cdots \cap(A_K)}\\
+        &\leq \abs{\mu(A_0\cap T^{-n_1}A_1\cap\cdots\cap T^{-n_k}A_k)-\mu(A'_0\cap T^{-n_1}A_1\cap\cdots\cap T^{-n_k}A_k)}\\
+        & \quad+\abs{\mu(A'_0\cap T^{-n_1}A_1\cap\cdots\cap T^{-n_k}A_k)-\mu(A'_0\cap T^{-n_1}A'_1\cap\cdots\cap T^{-n_k}A_k)}+\cdots\\
+        & \quad+\abs{\mu(A'_0\cap T^{-n_1}A'_1\cap\cdots\cap T^{-n_k}A'_k)-\mu(A_1)\mu (A_2)\cdots \cap(A_K)}
+    \end{split}
+\end{equation*}
+For $\abs{\mu(A_0\cap T^{-n_1}A_1\cap\cdots\cap T^{-n_k}A_k)-\mu(A'_0\cap T^{-n_1}A_1\cap\cdots\cap T^{-n_k}A_k)}\leq \abs{\mu(A_0\Delta A'_0)}<\epsilon/k^3$. By the same reason, all the terms without last are smaller than $\epsilon/k^3$: for example, 
+\begin{equation*}
+\begin{split}
+    &\abs{\mu(A'_0\cap T^{-n_1}A_1\cap\cdots\cap T^{-n_k}A_k)-\mu(A'_0\cap T^{-n_1}A'_1\cap\cdots\cap T^{-n_k}A_k)}\\
+    &=\abs{\mu(A'_0\cap T^{-n_1}(A_1\setminus A'_1)\cap\cdots\cap T^{-n_k}A_k)-\mu(A'_0\cap T^{-n_1}(A'_1\setminus A_1)\cap\cdots\cap T^{-n_k}A_k)}\\
+    &\leq \mu(T^{-n_1}(A_1\setminus A'_1))+\mu(T^{-n_1}(A'_1\setminus A_1))=\mu(A_1\Delta A'_1)<\epsilon/k^3.
+\end{split}
+\end{equation*}
+Thus, the sum is smaller than $(k+1)\epsilon/k^3$. For the last term, we already set that $A'_0$, $T^{-n_i}A'_i$ are mutually independent, so 
+\begin{equation*}
+\begin{split}
+    \mu(A'_0\cap T^{-n_1}A'_1\cap\cdots\cap T^{-n_k}A'_k)&=\mu(A'_0)\mu( T^{-n_1}A'_1)\cdots\mu(T^{-n_k}A'_k)\\
+    &=\mu(A'_0)\mu( A'_1)\cdots\mu(A'_k)\\
+    &<\mu(A_0)\mu(A_1)\cdots\mu(A_k)+O(\epsilon/k^2).
+    \end{split}
+\end{equation*} Therefore, for large enough $n_1, n_2-n_1, \ldots, n_k-n_{k-1}$,
+\begin{equation*}
+    \abs{\mu(A_0\cap T^{-n_1}A_1\cap\cdots\cap T^{-n_k}A_k)-\mu(A_1)\mu (A_2)\cdots \cap(A_K)}<\epsilon
+\end{equation*} and it shows that $T$ is mixing of order $k$ for arbitrary $k$.
+
+\begin{problem}{7}
+\end{problem}
+
+\begin{enumerate}
+    \item[$(\Rightarrow)$] If $T$ is weakly mixing, then for any $A$, $B$, and $C$, there are sets $J_{A,B}, J_{A,C}$ with density zero such that 
+    \begin{equation*}
+        \begin{split}
+            \mu(T^{-n_1}A\cap B)&\rightarrow \mu(A)\mu(B) \\
+            \mu(T^{-n_2}A\cap C)&\rightarrow \mu(A)\mu(C)
+        \end{split}
+    \end{equation*}
+    for $n_1,n_2\rightarrow \infty$ with $n_1\notin J_{A,B}$, $n_2\notin J_{A,C}$. Now, let $J=J_{A,B}\cup J_{A,C}$. Since these two sets are density zero, for fixed $N\in \mathbb{N}$, there exists $M$ such that 
+    \begin{equation*}
+    \begin{split}
+        \frac{1}{n}\abs{\{j\in J_{A,B}\mid 1\leq j\leq n\}}&<2^{-(N+1)} \\
+        \frac{1}{n}\abs{\{j\in J_{A,C}\mid 1\leq j\leq n\}}&<2^{-(N+1)}
+    \end{split}
+    \end{equation*}
+    for all $n>M$, so $\frac{1}{n}\abs{\{j\in J\mid 1\leq j\leq n\}}<2^{-N}$.
+    It means that there exists some sequence $\{n_k\}$ such that $n_k\rightarrow \infty$ as $k\rightarrow \infty$ and $\mu(T^{-n_k} A\cap B)\rightarrow \mu(A)\mu(B)$,
+    $\mu(T^{-n_k}A\cap C)\rightarrow \mu(A)\mu(C)$. Since $\mu(A)\mu(B)\mu(C)>0$, there should exists $n\geq 1$ such that $\mu(T^{-n}A\cap B)\mu(T^{-n}A\cap C)>0$.
+    
+    \item[($\Leftarrow$)] Since weak mixing of $(X, \mathcal{B}, \mu, T)$ is equivalent to ergodicity of $(\mu\times \mu, T\times T)$, I need to show that for any $A_1, A_2, B_1, B_2\in \mathcal{B}$ with positive measures, there exists $n\in \mathbb{N}$ such that $\mu(T^{-n}A_1 \cap B_1)>0$, $\mu(T^{-n}A_2 \cap B_2)>0$. Now, I'll prove that if for any $A,B\in \mathcal{B}$ with positive measures, there exists $n\in \mathbb{N}$ such that $\mu(T^{-n}A\cap A)\mu(T^{-n}A\cap B)>0$ implies the erodicity of $(\mu\times \mu, T\times T)$.
+    First, fix $A_1, A_2, B_1, B_2\in \mathcal{B}$ with positive measures and using ergodicity of $T$, find $n_1, n_2\in \mathbb{N}$ such that $C=T^{-n_1}A_1\cap A_2$, $\mu(C)>0$ and $D=T^{-n_2}C\cap T^{-n_1}B_1$, $\mu(D)>0$. Using hypothesis, find $n_3\in \mathbb{N}$ such that $T^{-n_3}D\cap D$ and $T^{-n_3}D\cap B_2$ have non-zero measure. Now,
+    \begin{equation*}
+    \begin{split}
+        \mu(T^{-n_2-n_3}A_1\cap B_1)&= \mu(T^{-n_1-n_2-n_3}A_1\cap T^{-n_1}B_1)\\
+        &\geq\mu(T^{-n_1-n_2-n_3}A_1\cap T^{-n_2-n_3}A_2\cap T^{-n_1}B_1)=\mu(T^{-n_2-n_3}C\cap T^{-n_1}B_1)\\
+        &\geq\mu(T^{-n_3}D\cap T^{-n_1}B_1)\geq \mu(T^{-n_3}D\cap D)>0
+        \end{split}
+    \end{equation*}
+    and
+    \begin{equation*}
+    \begin{split}
+        \mu(T^{-n_2-n_3}A_2\cap B_2)&\geq \mu(T^{-n_2-n_3}C\cap B_2)\\
+        &\geq\mu(T^{-n_3}D\cap B_2)>0.
+        \end{split}
+    \end{equation*}
+    It ends the proof.
+\end{enumerate}
+
+\begin{problem}{9}
+\end{problem}
+Let $\lambda\in \spec(T)$, then there exists $f\in L^2$ such that $Tf=\lambda f$ and it means that $=\abs{\lambda}^2\langle f, f \rangle = \langle Tf, Tf\rangle = \langle f, f\rangle$. Therefore, $\spec(T)\subset \mathcal{S}^1$. Now, I'll show that $\spec(T)$ forms a group.
+
+First, $1\in \spec(T)$ since $T\chi_X=\chi_X$. Also, it is simple since $f\in L^2$ and $Tf=f$ implies that $f$ is constant a.e. and $f\in L^\infty$. Now, assume that $Tf=\lambda f$ for $f\in L^2$ and $\lambda\neq 1$. Let $f=0$ on non measure zero set $E$, then for $x\in T^{-1}E$, $Tf(x)=0$. To satisfy $Tf=\lambda f$, $T^{-1}E\Delta E=0$, which implies $\mu(E)=1$, but it means that $\lambda=1$. Therefore, $f\neq 0$ a.e. and we can consider $f^{-1}$. For $Tf=\lambda_1 f$, $Tg=\lambda_2 g$ (for $\lambda_2=1$, set $g\neq 0$), $T(f/g)=(\lambda_1/\lambda_2)(f/g)$, so $\spec(T)$ forms a subgroup of $\mathcal{S}^1$. Furthermore, all the eigenvalues are simple since if $Tf_1=\lambda f_1$ and $Tf_2=\lambda f_2$ for some $\lambda$, $T(f_1/f_2)=(f_1/f_2)$ and it implies $f_1=cf_2$ for some constant $c$ (in fact, constant a.e.).
+
+\begin{problem}{8}
+\end{problem}
+I'll assume that $T$ has discrete spectrum on $(X, \mathcal{B}, \mu)$. Let $\Lambda$ be the set consisting of all eigenvalues of $T$ and label the eigenvalues $\lambda_i$ and associated eigenfunction $f_i$ satisfying $\norm{f_i}_2=1$. For simplicity, let $\lambda_1=1$. For any $f\in L^2$, we can write $f=\sum\limits_{i=1}^\infty c_i f_i$ where $c_i=\int f \bar{f}_i d\mu$. Since $T^n$ is bounded for all $n\in \mathbb{N}$, $T^n$ is continuous and $T^n(\sum_{i=1}^m c_i f_i)\rightarrow T^nf$ as $m\rightarrow \infty$ in $L^2$ sense. Now, we know that
+\begin{equation*}
+    T^n(\sum_{i=1}^m c_i f_i)=\sum_{i=1}^m c_i(\lambda_i)^n f_i.
+\end{equation*}
+Out stratege is to set $(\lambda_i)^n$ enough close to $1$ for all $i$ and distinct $\lambda_i$. (If there is a multiplicity, we don't need to repeat the process. In fact, I showed that any $\lambda_i$ are simple eigenvalue, so we don't worry about it.) For $\lambda_1$, it is already $1$, so let's start from $\lambda_2$. I'll divide the case:
+\begin{enumerate}
+    \item[-]If $\frac{1}{2\pi i}\ln\lambda_2\in\mathbb{Q}$, there exists $p,q\in \mathbb{Z}$, $(p,q)=1$, $q\neq 0$ such that $\frac{1}{2\pi i}\ln\lambda_2=\frac{p}{q}$. Then, for $k\in \mathbb{N}$, $T^{kq}f_2=f_2$. Make a sequence of such $q^1_k=kq$. $k\in \mathbb{N}$ in increasing order.
+    \item[-]If $\frac{1}{2\pi i}\ln\lambda_2\in\mathbb{Q}^c$, by Dirichlet's theorem, for each $k\in \mathbb{N}$, there exists infinitely many $p_k,q_k\in \mathbb{Z}$, $(p_k,q_k)=1$, $q_k\neq 0$ such that $\abs{\frac{1}{2\pi i}\ln\lambda_2-\frac{p_k}{q_k}}<\frac{1}{k}$. For the proof, let's choose $q_k$ different from other $q_j$, $j\neq k$. Then, as $q_k\rightarrow \infty$, $\lambda^{q_k}\rightarrow 1$. Make a sequence of such $q^1_k$ in increasing order.
+\end{enumerate}
+Now, we made a sequence $\{q^1_k\}$ such that $\abs{\frac{1}{2\pi i}\ln\lambda_1^{q^1_k}}<\frac{1}{k}$, (from now on, I'll denote $\abs{\frac{1}{2\pi i}\ln\lambda_1^{q^1_k}}$ in $\mod 1$ sense.) and the elements in the sequence are distinct.
+
+I'll prove that for each $i$, there exists a strictly increasing sequence $q^i_k$ satisfying $\abs{\frac{1}{2\pi i}\ln\lambda_i^{q^i_k}}<\frac{1}{k}$. For induction, I'll assume that we can make a sequence $q^i_k$ such that $\abs{\frac{1}{2\pi i}\ln\lambda_i^{q^i_k}}<\frac{1}{k}$ for all $i<m$, and the elements in the sequence are distinct. For $i=m$, let's construct a sequence $q^m_k$ satisfying $\abs{\frac{1}{2\pi i}\ln\lambda_i^{q^i_k}}<\frac{1}{k}$ for all $i\leq m$. First, consider $q^{m-1}_{2k}$, then $\abs{\frac{1}{2\pi i}\ln\lambda_i^{q^{m-1}_{2k}}}<\frac{1}{2k}$ for all $i<m$. Since this is infinite sequence, there exists $q^{m-1}_{2k_1}$, $q^{m-1}_{2k_2}$, $1<k_1< k_2$ such that $\abs{\frac{1}{2\pi i}\ln\lambda_m^{q^{m-1}_{2k_2}-q^{m-1}_{2k_1}}}<1$. Since each element in $q^{m-1}_k$ are distinct, $q^{m-1}_{2k_2}-q^{m-1}_{2k_1}\neq 0$ and it satisfies $\abs{\frac{1}{2\pi i}\ln\lambda_i^{q^{m-1}_{2k_2}-q^{m-1}_{2k_1}}}<1$ for all $i<m$. Now, let $q^m_1=q^{m-1}_{2k_2}-q^{m-1}_{2k_1}$. For the next step for choose $k_2<k'_1<k'_2$ satisfying $\abs{\frac{1}{2\pi i}\ln\lambda_i^{q^{m-1}_{2k'_2}-q^{m-1}_{2k'_1}}}<\frac{1}{2}$ for all $i\leq m$ and $q^m_1< q^{m-1}_{2k'_2}-q^{m-1}_{2k'_1}$.(To insure $q^m_1< q^{m-1}_{2k'_2}-q^{m-1}_{2k'_1}$, we can select $q^{m-1}_{2i}$ to have large period and apply Pigeon hole principle.) Since $k_2>2$. $k'_1>3$ and this continues in induction step, Let $q^m_2=q^{m-1}_{2k'_2}-q^{m-1}_{2k'_1}$, then $q^m_1<q^m_2$ since $q^m_1< q^{m-1}_{2k'_2}-q^{m-1}_{2k'_1}$. By continuing this step, we get $g^m_k$ for all $k$, which ends induction step.
+Now, we get $g^m_k$ for each $m$. Use diagonal argument and set $n_k=q^k_k$ for $k\in \mathbb{N}$, then $n_k$ satisfies that for $n_k\rightarrow\infty$,
+\begin{equation*}
+    \norm{T^{n_k}f-f}\rightarrow 0
+\end{equation*}
+
+\end{document}
